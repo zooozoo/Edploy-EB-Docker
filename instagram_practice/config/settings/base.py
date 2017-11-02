@@ -24,10 +24,7 @@ CONFIG_SECRET_COMMON_FILE = os.path.join(CONFIG_SECRET_DIR, 'settings_common.jso
 CONFIG_SECRET_DEV_FILE = os.path.join(CONFIG_SECRET_DIR, 'settings_dev.json')
 CONFIG_SECRET_DEPLOY_FILE = os.path.join(CONFIG_SECRET_DIR, 'settings_deploy.json')
 
-f = open(os.path.join(CONFIG_SECRET_DIR, 'settings_common.json'))
-config_secret_common_str = f.read()
-f.close()
-config_secret_common = json.loads(config_secret_common_str)
+config_secret_common = json.loads(open(CONFIG_SECRET_COMMON_FILE).read())
 
 # Media paths
 MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')

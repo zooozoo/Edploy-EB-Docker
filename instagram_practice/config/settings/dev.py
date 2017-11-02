@@ -1,9 +1,7 @@
 from .base import *
 
-f = open(os.path.join(CONFIG_SECRET_DIR, 'settings_dev.json'))
-config_secret_dev_str = f.read()
-f.close()
-config_secret = json.loads(config_secret_dev_str)
+config_secret = json.loads(open(CONFIG_SECRET_DEV_FILE).read())
+
 # AWS
 AWS_ACCESS_KEY_ID = config_secret_common['AWS']['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = config_secret_common['AWS']['AWS_SECRET_ACCESS_KEY']
