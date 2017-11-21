@@ -15,6 +15,8 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
 # paths
+import raven
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ROOT_DIR = os.path.dirname(BASE_DIR)
 
@@ -67,7 +69,9 @@ INSTALLED_APPS = [
 
     'post',
     'member',
-    'storages'
+    'storages',
+
+    'raven.contrib.django.raven_compat',
 ]
 
 MIDDLEWARE = [
@@ -117,6 +121,13 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+RAVEN_CONFIG = {
+    'dsn': 'https://b5ef06d7b86d46ed9671add26447522c:6ff7cd06ca9c4a7bb49615117e11ca4b@sentry.io/248295',
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    'release': raven.fetch_git_sha(os.path.abspath(os.pardir)),
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
